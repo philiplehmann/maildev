@@ -1,23 +1,21 @@
 #
-# MailCatcher Dockerfile
+# maildev Dockerfile
 #
 
-FROM ruby:3.1-slim-bullseye
+FROM node:18.5.0
 
-# Install MailHog:
-RUN apt update \
-  && apt install -y build-essential sqlite3 libsqlite3-dev \
-  && gem install mailcatcher --no-document \
-  && apt remove -y build-essential \
-  && apt autoremove -y
+WORKDIR /home/maildev
 
-RUN useradd -ms /bin/bash -u 1000 mailcatcher
+COPY package.json package.json
+COPY yarn.lock yarn.lock
 
-WORKDIR /home/mailcatcher
+RUN yarn install
 
-USER mailcatcher
+RUN useradd -ms /bin/bash maildev
+
+USER maildev
 
 # Expose the SMTP and HTTP ports:
 EXPOSE 1025 1080
 
-ENTRYPOINT ["mailcatcher", "--foreground", "--verbose", "--ip=0.0.0.0"]
+ENTRYPOINT ["yarn", "maildev"]

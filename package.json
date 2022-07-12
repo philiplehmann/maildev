@@ -1,0 +1,8 @@
+{
+  "name": "maildev",
+  "packageManager": "yarn@3.2.1",
+  "license": "MIT",
+  "dependencies": {
+    "maildev": "^2.0.5"
+  }
+}
