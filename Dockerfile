@@ -2,7 +2,7 @@
 # maildev Dockerfile
 #
 
-FROM node:18.5.0
+FROM node:18.14.0
 
 WORKDIR /home/maildev
 
