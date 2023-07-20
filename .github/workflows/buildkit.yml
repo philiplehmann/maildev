@@ -36,5 +36,5 @@ jobs:
           platforms: linux/arm64,linux/amd64,linux/ppc64le,linux/s390x,linux/arm/v7
           push: true
           tags: |
-            philiplehmann/maildev:v2.0.5
+            philiplehmann/maildev:v2.1.0
             philiplehmann/maildev:latest
